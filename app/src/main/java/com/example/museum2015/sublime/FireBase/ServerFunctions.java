@@ -19,11 +19,19 @@ public class ServerFunctions {
         mDatabase = dataBase;
     }
 
+    /*
+     * Sets up the database.
+     */
     public void setUpFirebase(){
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
+    /*
+     * Add a new item to firebase server
+     * @param fields needed to describe a new shop item
+     * @return void
+     */
     public void addNewItem(String name, String brand, String category, String condition,
                         double price, String picture, String description, String seller){
 
@@ -35,11 +43,21 @@ public class ServerFunctions {
 
     }
 
+    /*
+     * Remove an item from firebase server
+     * @param itemName the identifier of the item to be deleted on the server
+     * @return void
+     */
     public void deleteItem(String itemName){
         DatabaseReference itemRef = mDatabase.child("items").child(itemName);
         itemRef.removeValue();
     }
 
+    /*
+     * Add a new article to firebase server
+     * @param fields needed to describe a new article
+     * @return void
+     */
     public void addNewArticle(String title, String description, String picture, List<String> items){
 
         ShopArticle newArticle = new ShopArticle(title, description, picture, items);
@@ -48,6 +66,11 @@ public class ServerFunctions {
 
     }
 
+    /*
+     * Remove an article from firebase server
+     * @param articleTitle the identifier of the article to be deleted on the server
+     * @return void
+     */
     public void deleteArticle(String artcileTitle){
 
         DatabaseReference articleRef = mDatabase.child("articles").child(artcileTitle);
