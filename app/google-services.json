@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "59521846953",
+    "firebase_url": "https://sublime-17938.firebaseio.com",
+    "project_id": "sublime-17938",
+    "storage_bucket": "sublime-17938.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59521846953:android:316ac09fda3e9b64",
+        "android_client_info": {
+          "package_name": "com.example.museum2015.sublime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59521846953-vi9pue120hftrje8t4653n1o6kc3ta9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.museum2015.sublime",
+            "certificate_hash": "CFCDDBAA214EED7AD47710E21FB11C12D0B0F71F"
+          }
+        },
+        {
+          "client_id": "59521846953-oha0m5ho3l31p82biettgigspu6ahnoo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_s6lh34mkT_F0mSqrtTpW4zToUHKR72k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59521846953-oha0m5ho3l31p82biettgigspu6ahnoo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

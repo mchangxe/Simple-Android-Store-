@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4E4E4E"
+    >
+
+    <TextView
+    android:id="@+id/address_line_1"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:hint="Address Line 1"
+    android:layout_gravity="center_horizontal"
+    android:textSize="10sp"
+    android:layout_marginTop="160dp"
+
+    />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_element"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/address_line_2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="Address Line 2"
+        android:layout_gravity="center_horizontal"
+        android:textSize="10sp"
+        android:layout_marginTop="25dp"
+
+        />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_element"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/address_name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_gravity="center_horizontal"
+        android:textSize="10sp"
+        android:layout_marginTop="25dp"
+
+        />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_element"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/address_city"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="City"
+        android:layout_gravity="center_horizontal"
+        android:textSize="10sp"
+        android:layout_marginTop="25dp"
+
+        />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_element"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/address_State"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="State"
+        android:layout_gravity="center_horizontal"
+        android:textSize="10sp"
+        android:layout_marginTop="25dp"
+        />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_element"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>
