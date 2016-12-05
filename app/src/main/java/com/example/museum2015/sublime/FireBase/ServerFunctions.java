@@ -64,20 +64,49 @@ public class ServerFunctions {
      */
     public ArrayList<ShopItem> retrieve(){
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
+//        mDatabase.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                allitems = fetchData(dataSnapshot);
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//                allitems = fetchData(dataSnapshot);
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//                fetchData(dataSnapshot);
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        mDatabase.child("items").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                fetchData(dataSnapshot);
+                ShopItem item= dataSnapshot.getValue(ShopItem.class);
+                allitems.add(item);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                fetchData(dataSnapshot);
+                ShopItem item= dataSnapshot.getValue(ShopItem.class);
+                allitems.add(item);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                fetchData(dataSnapshot);
+
             }
 
             @Override
@@ -91,6 +120,7 @@ public class ServerFunctions {
             }
         });
 
+        Log.d("HERE", "retrieve: " +allitems.isEmpty());
         return allitems;
     }
 
@@ -98,7 +128,7 @@ public class ServerFunctions {
      * Fetch data from server
      * @param dataSnapshot in the form of a ShopItem class object
      */
-    private void fetchData(DataSnapshot dataSnapshot)
+    /*private ArrayList<ShopItem> fetchData(DataSnapshot dataSnapshot)
     {
         if (!allitems.isEmpty()) {
             allitems.clear();
@@ -109,6 +139,8 @@ public class ServerFunctions {
             ShopItem name = ds.getValue(ShopItem.class);
             allitems.add(name);
         }
-    }
+        //Log.d("NEXT", "retrieve: " +allitems.isEmpty());
+        return allitems;
+    }*/
 
 }
