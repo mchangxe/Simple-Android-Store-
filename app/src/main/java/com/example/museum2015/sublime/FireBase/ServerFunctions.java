@@ -45,7 +45,6 @@ public class ServerFunctions {
         ShopItem newItem = new ShopItem(name, brand, category, condition,
         price, description, seller);
 
-        mDatabase.child("items").setValue(name+brand);
         mDatabase.child("items").child(name+brand).setValue(newItem);
 
     }
@@ -64,6 +63,7 @@ public class ServerFunctions {
      * Retrieve from server
      */
     public ArrayList<ShopItem> retrieve(){
+
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -94,18 +94,20 @@ public class ServerFunctions {
         return allitems;
     }
 
+    /*
+     * Fetch data from server
+     * @param dataSnapshot in the form of a ShopItem class object
+     */
     private void fetchData(DataSnapshot dataSnapshot)
     {
         if (!allitems.isEmpty()) {
             allitems.clear();
         }
 
-        for (DataSnapshot ds:dataSnapshot.getChildren())
+        for (DataSnapshot ds: dataSnapshot.getChildren())
         {
-
             ShopItem name = ds.getValue(ShopItem.class);
             allitems.add(name);
-
         }
     }
 

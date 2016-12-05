@@ -14,8 +14,13 @@ import android.widget.ListView;
 
 import com.example.museum2015.sublime.FireBase.ServerFunctions;
 import com.example.museum2015.sublime.FireBase.ShopItem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainFeedView extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class MainFeedView extends AppCompatActivity {
     private MainFeedAdapter mAdapter;
     private DatabaseReference mDataBase;
     private ServerFunctions serverHelper;
+    private ArrayList<ShopItem> allItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +43,42 @@ public class MainFeedView extends AppCompatActivity {
         //set up server
         mDataBase = FirebaseDatabase.getInstance().getReference();
         serverHelper = new ServerFunctions(mDataBase);
+        allItems = serverHelper.retrieve();
 
         //set up grid view
         mGridView = (GridView) findViewById(R.id.gridview);
 
-        mAdapter = new MainFeedAdapter(this, R.layout.grid_item_main_feed, serverHelper.retrieve());
+        mAdapter = new MainFeedAdapter(getApplicationContext(),
+                R.layout.grid_item_main_feed,
+                allItems);
         mGridView.setAdapter(mAdapter);
+        Log.d("HERE", "onCreate: " + allItems.isEmpty());
+
+        //add value listener to the "items" node of firebase tree
+        final DatabaseReference items = mDataBase.child("items");
+        items.addValueEventListener(new ValueEventListener() {
+
+            /*
+             * If there are changes to the items list on firebase, get the new list of shop items
+             * and update gridview
+             */
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                allItems = serverHelper.retrieve();
+
+                mAdapter = new MainFeedAdapter(getApplicationContext(),
+                        R.layout.grid_item_main_feed,
+                        allItems);
+                mGridView.setAdapter(mAdapter);
+                ArrayList<ShopItem> test = serverHelper.retrieve();
+                Log.d("HERE", "onCreate: " + test.isEmpty());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -53,7 +89,6 @@ public class MainFeedView extends AppCompatActivity {
                  * @return void
                  */
                 ShopItem currState = mAdapter.getItem(position);
-                Log.d("here", "onItemClick: " + currState.getBrand());
                 Intent detailIntent = new Intent(adapterView.getContext(), DetailItemView.class);
                 detailIntent.putExtra("ShopItem", currState);
                 startActivity(detailIntent);
