@@ -1,10 +1,16 @@
 package com.example.museum2015.sublime.FireBase;
 
+import android.util.Log;
+
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.ref.Reference;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,16 +21,18 @@ public class ServerFunctions {
 
     private DatabaseReference mDatabase;
 
-    public ServerFunctions(DatabaseReference dataBase){
-        mDatabase = dataBase;
+    private ArrayList<ShopItem> allitems = new ArrayList<>();
+
+    public DatabaseReference getmDatabase(){
+        return mDatabase;
     }
 
-    /*
-     * Sets up the database.
-     */
-    public void setUpFirebase(){
+    public ServerFunctions(){
+        mDatabase = null;
+    }
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+    public ServerFunctions(DatabaseReference dataBase){
+        mDatabase = dataBase;
     }
 
     /*
@@ -33,10 +41,9 @@ public class ServerFunctions {
      * @return void
      */
     public void addNewItem(String name, String brand, String category, String condition,
-                        double price, String picture, String description, String seller){
-
+                        String price, String description, String seller){
         ShopItem newItem = new ShopItem(name, brand, category, condition,
-        price, picture, description, seller);
+        price, description, seller);
 
         mDatabase.child("items").setValue(name+brand);
         mDatabase.child("items").child(name+brand).setValue(newItem);
@@ -54,28 +61,52 @@ public class ServerFunctions {
     }
 
     /*
-     * Add a new article to firebase server
-     * @param fields needed to describe a new article
-     * @return void
+     * Retrieve from server
      */
-    public void addNewArticle(String title, String description, String picture, List<String> items){
+    public ArrayList<ShopItem> retrieve(){
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                fetchData(dataSnapshot);
+            }
 
-        ShopArticle newArticle = new ShopArticle(title, description, picture, items);
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                fetchData(dataSnapshot);
+            }
 
-        mDatabase.child("articles").child(title).setValue(newArticle);
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                fetchData(dataSnapshot);
+            }
 
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return allitems;
     }
 
-    /*
-     * Remove an article from firebase server
-     * @param articleTitle the identifier of the article to be deleted on the server
-     * @return void
-     */
-    public void deleteArticle(String artcileTitle){
+    private void fetchData(DataSnapshot dataSnapshot)
+    {
+        if (!allitems.isEmpty()) {
+            allitems.clear();
+        }
 
-        DatabaseReference articleRef = mDatabase.child("articles").child(artcileTitle);
-        articleRef.removeValue();
+        for (DataSnapshot ds:dataSnapshot.getChildren())
+        {
+
+            ShopItem name = ds.getValue(ShopItem.class);
+            allitems.add(name);
+
+        }
     }
-
 
 }

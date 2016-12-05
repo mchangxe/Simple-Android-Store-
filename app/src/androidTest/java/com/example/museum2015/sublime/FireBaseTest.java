@@ -1,19 +1,13 @@
 package com.example.museum2015.sublime;
 
-import android.content.Context;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.test.InstrumentationRegistry;
 
-import com.example.museum2015.sublime.FireBase.ServerFunctions;
-import com.example.museum2015.sublime.FireBase.ShopArticle;
 import com.example.museum2015.sublime.FireBase.ShopItem;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;

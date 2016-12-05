@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.museum2015.sublime">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +12,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainFeedView">
+        </activity>
+
+        <activity android:name=".MainThankYou"></activity>
+        <activity android:name=".DetailItemView"></activity>
+        <activity android:name=".MainMeView"></activity>
+        <activity android:name=".MainPurchase"></activity>
+
+        <activity android:name=".Auth0LogIn"></activity>
+        <activity android:name=".MainAddNew"></activity>
+
+        <activity
+            android:name=".StartAuth0"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name="com.auth0.android.lock.LockActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Lock.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="miconik.auth0.com"
+                    android:pathPrefix="/android/com.example.museum2015.sublime/callback"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.auth0.android.provider.WebAuthActivity"/>
+
+
     </application>
 
 </manifest>
