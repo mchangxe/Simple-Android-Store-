@@ -17,8 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainThankYou extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_thankyou);
 
         try {

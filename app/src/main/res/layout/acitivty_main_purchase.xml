@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#4E4E4E"
     tools:context="com.example.museum2015.sublime.MainPurchase">
-    >
 
     <EditText
     android:id="@+id/address_line_1"
@@ -15,16 +14,10 @@
     android:hint="Address Line 1"
     android:layout_gravity="center_horizontal"
     android:textSize="10sp"
-    android:layout_marginTop="160dp"
+    android:layout_marginTop="30dp"
 
     />
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_line_element"
-        android:layout_gravity="center_horizontal"
-        />
 
     <EditText
         android:id="@+id/address_line_2"
@@ -37,12 +30,6 @@
 
         />
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_line_element"
-        android:layout_gravity="center_horizontal"
-        />
 
     <EditText
         android:id="@+id/address_name"
@@ -55,12 +42,6 @@
 
         />
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_line_element"
-        android:layout_gravity="center_horizontal"
-        />
 
     <EditText
         android:id="@+id/address_city"
@@ -73,12 +54,6 @@
 
         />
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_line_element"
-        android:layout_gravity="center_horizontal"
-        />
 
     <EditText
         android:id="@+id/address_State"
@@ -90,12 +65,6 @@
         android:layout_marginTop="25dp"
         />
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_line_element"
-        android:layout_gravity="center_horizontal"
-        />
 
     <Button
         android:text="CONFIRM"

@@ -55,7 +55,7 @@ public class MainMeView extends AppCompatActivity{
                  * When clicks on a list item, show a toast with the state name. JUST FOR FUN
                  * @return void
                  */
-                ShopItem currState = mAdapter.getItem(position);
+                ShopItem currState = (ShopItem)mAdapter.getItem(position);
                 Intent detailIntent = new Intent(adapterView.getContext(), DetailItemView.class);
                 detailIntent.putExtra("ShopItem", currState);
                 startActivity(detailIntent);

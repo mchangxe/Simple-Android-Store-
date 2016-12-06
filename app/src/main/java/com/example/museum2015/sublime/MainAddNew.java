@@ -87,7 +87,10 @@ public class MainAddNew extends AppCompatActivity{
     }
 
 
-
+    /*
+     * This function will check if the page is successfully filled, if any of the fields is not filled
+     * then a toast will be displayed.
+     */
     public boolean checkFields(){
         boolean success = true;
         if(name.getText().length()==0){
@@ -130,6 +133,11 @@ public class MainAddNew extends AppCompatActivity{
         return success;
     }
 
+    /*
+     * An auth0 feature that can get the user email account from the client. If sucessfully
+     * authenticated, the member varibale userAccount will be set to the email account.
+     * (A REACH FEATURE)
+     */
     public void getUserAccount(){
         AuthenticationAPIClient client = new AuthenticationAPIClient(
                 new Auth0("KjUQNPc9H0z6gUlY726lRTCJeN38n7kv", "miconik.auth0.com"));

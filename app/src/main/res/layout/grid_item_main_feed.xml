@@ -13,20 +13,26 @@
         android:paddingTop="4dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
     android:id="@+id/itemPrice"
     android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:textSize="8sp"
-    android:gravity="center_horizontal"/>
+    android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
         android:id="@+id/itemCategory"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:textSize="7sp"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        />
 
 </LinearLayout>

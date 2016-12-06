@@ -2,7 +2,6 @@ package com.example.museum2015.sublime;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +28,8 @@ public class MainPurchase extends AppCompatActivity {
     EditText addressCity;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivty_main_purchase);
 
         //set up server
@@ -56,6 +55,9 @@ public class MainPurchase extends AppCompatActivity {
         });
     }
 
+    /*
+     * Checks if all the fields are filled correctly before uploading (REACH FEATURE)
+     */
     public boolean uploadAddress(){
         boolean success = true;
         if(addressLine1.getText().length()==0){

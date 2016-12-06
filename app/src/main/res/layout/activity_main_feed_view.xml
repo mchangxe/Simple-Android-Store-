@@ -18,7 +18,7 @@
         />
 
     <GridView
-        android:id="@+id/gridview"
+        android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -27,6 +27,7 @@
         android:verticalSpacing="20dp"
         android:horizontalSpacing="12dp"
         android:stretchMode="spacingWidthUniform"
+        android:layout_marginTop="30dp"
         />
 
 </RelativeLayout>
